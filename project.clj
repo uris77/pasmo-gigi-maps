@@ -37,6 +37,7 @@
   :profiles {:dev-common       {:dependencies [[ring/ring-mock "0.2.0"] [ring/ring-devel "1.4.0"]]
                                 :env {:dev? true}
                                 :open-browser? true}
+             :dev-env-vars     {}
              :dev              [:dev-env-vars :dev-common]
              
              :uberjar-common   {:aot         all
