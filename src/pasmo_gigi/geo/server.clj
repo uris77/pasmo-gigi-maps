@@ -10,7 +10,7 @@
 (defn start-server
   [handler port]
   (cheshire.generate/add-encoder org.bson.types.ObjectId cheshire.generate/encode-str)
-  (let [server (run-server handler {:port port})]
+  (let [server (run-server handler {:port port :join? false})]
     (log/info "Started Server on port " port)
     (mongo-connection!)
     server))
@@ -25,7 +25,8 @@
 (defrecord PasmoGigiGeo []
   component/Lifecycle
   (start [this]
-    (assoc this :server (start-server #'app 3449)))
+    (let [port (Integer/parseInt (or (System/getenv "PORT") "3449"))] 
+      (assoc this :server (start-server #'app port))))
   (stop [this]
     (stop-server (:server this))
     (dissoc this :server)))
