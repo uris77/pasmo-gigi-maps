@@ -1,4 +1,5 @@
 (ns pasmo-gigi.geo.server
+  (:gen-class)
   (:require [cheshire.generate :as cheshire.generate]
             [clojure.tools.logging :as log]
             [com.stuartsierra.component :as component]
