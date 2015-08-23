@@ -40,7 +40,7 @@
              :dev-env-vars     {}
              :dev              [:dev-env-vars :dev-common]
              
-             :uberjar-common   {:aot         all
+             :uberjar-common   {:aot         :all
                                 :omit-source true
                                 :main        pasmo-gigi.geo.server}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
