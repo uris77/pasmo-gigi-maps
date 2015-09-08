@@ -1,4 +1,4 @@
-(ns pasmo-gigi.geo.repl
+(ns repl
   (:require [reloaded.repl :refer [system reset stop]]
             [pasmo-gigi.geo.server]))
 

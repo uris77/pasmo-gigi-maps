@@ -25,7 +25,7 @@
 (defrecord PasmoGigiGeo []
   component/Lifecycle
   (start [this]
-    (let [port (Integer/parseInt (or (System/getenv "PORT") "3449"))] 
+    (let [port (Integer/parseInt (or (System/getenv "PORT") "9090"))] 
       (assoc this :server (start-server #'app port))))
   (stop [this]
     (stop-server (:server this))

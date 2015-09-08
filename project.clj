@@ -4,6 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/clojurescript "1.7.122"]
                  [org.clojure/tools.logging "0.3.1"]
                  [environ "1.0.0"]
                  [compojure "1.4.0"]
@@ -18,12 +19,17 @@
                  [com.cemerick/friend "0.2.1" :exclusions [ring/ring-core
                                                            org.clojure/core.cache
                                                            org.apache.httpcomponents/httpclient]]
-                 [friend-oauth2 "0.1.3" :exclusions [commons-logging
-                                                     org.apache.httpcomponents/httpcore]]
-                 [com.stuartsierra/component ""]
+
                  [com.stuartsierra/component "0.2.3"]
                  [reloaded.repl "0.1.0"]
-                 [compojure "1.4.0"]]
+                 [compojure "1.4.0"]
+                 [cljs-http "0.1.37"]
+                 [reagent "0.5.1-rc2"]
+                 [reagent-utils "0.1.5"]
+                 [re-frame "0.5.0-SNAPSHOT"]
+                 [secretary "1.2.3"]]
+
+  :jvm-opts ["-Xmx512m"]
   
   :plugins [[lein-ring "0.9.6"]
             [lein-environ "1.0.0"]]
@@ -34,9 +40,21 @@
   
   :uberjar-name "pasmo-gigi-maps.jar"
 
-  :profiles {:dev-common       {:dependencies [[ring/ring-mock "0.2.0"] [ring/ring-devel "1.4.0"]]
-                                :env {:dev? true}
-                                :open-browser? true}
+  :profiles {:dev-common       {:plugins       [[lein-cljsbuild "1.0.6"]
+                                                [lein-figwheel "0.3.7"]]
+                                :dependencies  [[reloaded.repl "0.1.0"]]
+                                :env           {:dev? true}
+                                :open-browser? true
+                                :source-paths ["dev" "src"]
+                                :cljsbuild     {:builds [{:source-paths ["src/pasmo_gigi/geo/ui"]
+                                                          :figwheel     true
+                                                          :compiler     {:output-to "target/classes/public/js/app.js"
+                                                                         :output-dir "target/classes/public/js/out"
+                                                                         :asset-path "js/out"
+                                                                         :optimizations :none
+                                                                         :recompile-dependents true
+                                                                         :main "pasmo-gigi.geo.ui.core"
+                                                                         :source-map true}}]}}
              :dev-env-vars     {}
              :dev              [:dev-env-vars :dev-common]
              

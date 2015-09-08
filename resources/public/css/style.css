@@ -84,9 +84,11 @@ a:hover { color:#101010; }
 .rp-docs-masthead > h1 {
     color: #ffffff;
     font-weight: bolder;
+    padding-top: 0.6em;
 }
 
 .rp-docs-masthead > footer {
     padding-top: 90%;
     margin-top: 85%;
 }
+
