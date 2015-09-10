@@ -1,4 +1,4 @@
-(defproject pasmo-gigi-maps "1.0.0"
+(defproject pasmo-gigi-maps "1.1.0-SNAPSHOT"
   :description "Plot outlets of gigi surveys on a map."
   :url "http://outletmappings.pasmo.bz"
   :license {:name "Eclipse Public License"
@@ -58,18 +58,20 @@
              :dev-env-vars     {}
              :dev              [:dev-env-vars :dev-common]
              
-             :uberjar-common   {:aot         :all
-                                :omit-source true
-                                :main        pasmo-gigi.geo.server
-                                :cljsbuild   {:builds [{:source-paths ["src/pasmo_gigi/geo/ui"]
-                                                        :figwheel     false
-                                                        :compiler     {:output-to "target/classes/public/js/app.js"
-                                                                       :output-dir "target/classes/public/js/out"
-                                                                       :asset-path "js/out"
-                                                                       :optimizations :none
-                                                                       :recompile-dependents true
-                                                                       :main "pasmo-gigi.geo.ui.core"
-                                                                       :source-map true}}]}}
+             :uberjar-common   {:aot          :all
+                                :omit-source  true
+                                :source-paths ["src"]
+                                :main         pasmo-gigi.geo.server
+                                :env          {:dev? false}
+                                :cljsbuild    {:builds [{:source-paths ["src/pasmo_gigi/geo/ui"]
+                                                         :figwheel     false
+                                                         :compiler     {:output-to "target/classes/public/js/app.js"
+                                                                        :output-dir "target/classes/public/js/out"
+                                                                        :asset-path "js/out"
+                                                                        :optimizations :advanced
+                                                                        :recompile-dependents true
+                                                                        :main "pasmo-gigi.geo.ui.core"
+                                                                        :source-map true}}]}}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
                                 :db             (System/getenv "DB")
                                 :default-admin  (System/getenv "DEFAULT_ADMIN")
