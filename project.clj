@@ -60,7 +60,16 @@
              
              :uberjar-common   {:aot         :all
                                 :omit-source true
-                                :main        pasmo-gigi.geo.server}
+                                :main        pasmo-gigi.geo.server
+                                :cljsbuild   {:builds [{:source-paths ["src/pasmo_gigi/geo/ui"]
+                                                        :figwheel     false
+                                                        :compiler     {:output-to "target/classes/public/js/app.js"
+                                                                       :output-dir "target/classes/public/js/out"
+                                                                       :asset-path "js/out"
+                                                                       :optimizations :none
+                                                                       :recompile-dependents true
+                                                                       :main "pasmo-gigi.geo.ui.core"
+                                                                       :source-map true}}]}}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
                                 :db             (System/getenv "DB")
                                 :default-admin  (System/getenv "DEFAULT_ADMIN")
