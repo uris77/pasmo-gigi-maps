@@ -64,8 +64,9 @@
                                 :main         pasmo-gigi.geo.server
                                 :env          {:dev? false}
                                 :cljsbuild    {:builds [{:source-paths ["src/pasmo_gigi/geo/ui"]
+                                                         :jar          true
                                                          :figwheel     false
-                                                         :compiler     {:output-to "target/classes/public/js/app.js"
+                                                         :compiler     {:output-to "resources/public/js/app.js"
                                                                         :output-dir "target/classes/public/js/out"
                                                                         :asset-path "js/out"
                                                                         :optimizations :advanced
