@@ -25,3 +25,5 @@
   (re-frame/dispatch-sync [:initialize-db])
   (mount-root)
   (map-views/render-map))
+
+(init)
