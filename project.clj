@@ -54,6 +54,8 @@
                                                                          :optimizations :none
                                                                          :recompile-dependents true
                                                                          :main "pasmo-gigi.geo.ui.core"
+                                                                         :foreign-libs [{:file "resources/public/js/mapbox.js"
+                                                                                         :provides ["mapbox.L"]}]
                                                                          :source-map true}}]}}
              :dev-env-vars     {}
              :dev              [:dev-env-vars :dev-common]
@@ -71,7 +73,9 @@
                                                               :compiler     {:optimizations :advanced
                                                                              :main "pasmo-gigi.geo.ui.core"
                                                                              :output-to "target/classes/public/js/app.js"
-                                                                             :output-dir "target/classes/public/js/out"}}}}}
+                                                                             :output-dir "target/classes/public/js/out"
+                                                                             :foreign-libs [{:file "resources/public/js/mapbox.js"
+                                                                                             :provides ["mapbox.L"]}]}}}}}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
                                 :db             (System/getenv "DB")
                                 :default-admin  (System/getenv "DEFAULT_ADMIN")

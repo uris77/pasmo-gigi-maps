@@ -1,6 +1,7 @@
 (ns pasmo-gigi.geo.ui.map.map-views
   (:require [re-frame.core :refer [subscribe dispatch]]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [mapbox.L :as L]))
 
 (def FEATURE-LAYER (r/atom nil))
 
@@ -15,4 +16,3 @@
 (defn map-coords
   [coords]
   (.setGeoJSON @FEATURE-LAYER (clj->js coords)))
-
