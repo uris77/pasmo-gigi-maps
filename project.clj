@@ -69,7 +69,7 @@
                                                               :figwheel     false
                                                               :compiler     {:optimizations :advanced
                                                                              :main "pasmo-gigi.geo.ui.core"
-                                                                             :output-to "resources/public/js/app.js"
+                                                                             :output-to "target/classes/public/js/app.js"
                                                                              :output-dir "target/classes/public/js/out"}}}}}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
                                 :db             (System/getenv "DB")
