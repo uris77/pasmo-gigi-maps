@@ -27,3 +27,4 @@
   (map-views/render-map))
 
 
+(init)
