@@ -63,16 +63,14 @@
                                 :source-paths ["src"]
                                 :main         pasmo-gigi.geo.server
                                 :env          {:dev? false}
-                                :cljsbuild    {:builds [{:source-paths ["src/pasmo_gigi/geo/ui"]
-                                                         :jar          true
-                                                         :figwheel     false
-                                                         :compiler     {:output-to "resources/public/js/app.js"
-                                                                        :output-dir "target/classes/public/js/out"
-                                                                        :asset-path "js/out"
-                                                                        :optimizations :advanced
-                                                                        :recompile-dependents true
-                                                                        :main "pasmo-gigi.geo.ui.core"
-                                                                        :source-map true}}]}}
+                                :hooks        [leiningen.cljsbuild]
+                                :cljsbuild    {:builds {:app {:source-paths ["src/pasmo_gigi/geo/ui"]
+                                                              :jar          true
+                                                              :figwheel     false
+                                                              :compiler     {:optimizations :advanced
+                                                                             :main "pasmo-gigi.geo.ui.core"
+                                                                             :output-to "resources/public/js/app.js"
+                                                                             :output-dir "target/classes/public/js/out"}}}}}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
                                 :db             (System/getenv "DB")
                                 :default-admin  (System/getenv "DEFAULT_ADMIN")
