@@ -16,6 +16,8 @@
 (let [mapbox (.-mapbox js/L)]
   (set! (-> mapbox .-accessToken) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg"))
 
+(.log js/console "set: " (.-accessToken (.-mapbox js/L)))
+
 (defn mount-root
   []
   (reagent/render [nav-views/nav-view]

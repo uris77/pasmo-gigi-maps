@@ -72,6 +72,7 @@
                                                               :output-wrapper false
                                                               :compiler     {:optimizations :advanced
                                                                              :main "pasmo-gigi.geo.ui.core"
+                                                                             :asset-path "js/out"
                                                                              :output-to "target/classes/public/js/app.js"
                                                                              :output-dir "target/classes/public/js/out"
                                                                              :foreign-libs [{:file "resources/public/js/mapbox.js"
