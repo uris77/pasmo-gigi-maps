@@ -11,9 +11,10 @@
             [mapbox.L :as L])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
-(.log js/console "access token: " js/L)
+(.log js/console "access token: " (-> js/L .-mapbox))
 
-(set! (-> js/L .-mapbox .-accessToken) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg")
+(let [mapbox (.-mapbox js/L)]
+  (set! (-> mapbox .-accessToken) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg"))
 
 (defn mount-root
   []
