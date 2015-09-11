@@ -11,7 +11,7 @@
             [mapbox.L :as L])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
-(.log js/console "access token: " (-> js/L .-mapbox))
+(.log js/console "access token: " (.-mapbox js/L))
 
 (let [mapbox (.-mapbox js/L)]
   (set! (-> mapbox .-accessToken) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg"))
