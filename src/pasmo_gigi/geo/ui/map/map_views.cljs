@@ -1,7 +1,6 @@
 (ns pasmo-gigi.geo.ui.map.map-views
   (:require [re-frame.core :refer [subscribe dispatch]]
-            [reagent.core :as r]
-            [mapbox.L :as L]))
+            [reagent.core :as r]))
 
 (def FEATURE-LAYER (r/atom nil))
 
