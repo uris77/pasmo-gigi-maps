@@ -74,6 +74,7 @@
                                                                              :asset-path "js/out"
                                                                              :output-to "target/classes/public/js/app.js"
                                                                              :output-dir "target/classes/public/js/out"
+                                                                             :source-map "target/classes/public/js/app.map.js"
                                                                              :externs ["js/mapbox.js"]}}}}}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
                                 :db             (System/getenv "DB")

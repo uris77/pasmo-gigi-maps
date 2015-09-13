@@ -10,12 +10,15 @@
             [pasmo-gigi.geo.ui.routes :as routes])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
-(.log js/console "access token: " (.-mapbox js/L))
 
-(let [mapbox (.-mapbox js/L)]
-  (set! (-> mapbox .-accessToken) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg"))
+(defn setup-mapbox [mapbox-api]
 
-(.log js/console "set: " (.-accessToken (.-mapbox js/L)))
+  (.log js/console "access token: " (.-mapbox mapbox-api))
+
+  (let [mapbox (.-mapbox mapbox-api)]
+    (set! (-> mapbox .-accessToken) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg"))
+
+  (.log js/console "set: " (.-accessToken (.-mapbox mapbox-api))))
 
 (defn mount-root
   []
@@ -23,12 +26,13 @@
                   (.getElementById js/document "nav")))
 
 (defn ^:export init
-  []
-  (.log js/console "Starting...")
+  [mapbox-api]
+  (.log js/console "Starting with ..." mapbox-api)
+  (setup-mapbox mapbox-api)
   (routes/app-routes)
   (re-frame/dispatch-sync [:initialize-db])
   (mount-root)
   (map-views/render-map))
 
 
-(init)
+(init js/L)
