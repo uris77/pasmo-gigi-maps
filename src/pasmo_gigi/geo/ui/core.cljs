@@ -20,7 +20,7 @@
     (set! (-> mapbox .-accessToken) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg")
     (swap! db/settings assoc :mapbox-api mapbox-api))
 
-  (.log js/console "set: " (.-accessToken (.-mapbox (:mapbox-api @settings)))))
+  (.log js/console "set: " (.-accessToken (.-mapbox (:mapbox-api @db/settings)))))
 
 (defn mount-root
   []

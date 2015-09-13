@@ -8,7 +8,7 @@
 (defn render-map
   []
   (let [mapbox-api (:mapbox-api @settings)
-        map-el (.map (-> mapgox-api .-mapbox) "map" "uris77.nd0o07dd")
+        map-el (.map (-> mapbox-api .-mapbox) "map" "uris77.nd0o07dd")
         feature-layer (.addTo (-> mapbox-api
                                   .-mapbox
                                   .featureLayer) map-el)]
