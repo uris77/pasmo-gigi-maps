@@ -70,7 +70,7 @@
                                                               :figwheel     false
                                                               :compiler     {:optimizations :advanced
                                                                              :main "pasmo-gigi.geo.ui.core"
-                                                                             :output-wrapper false
+                                                                             :output-wrapper true
                                                                              :asset-path "js/out"
                                                                              :output-to "target/classes/public/js/app.js"
                                                                              :output-dir "target/classes/public/js/out"
