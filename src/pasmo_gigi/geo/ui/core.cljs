@@ -3,6 +3,7 @@
             [cljs.core.async :refer [<!]]
             [reagent.core :as reagent]
             [re-frame.core :as re-frame]
+            [goog.object :as gob]
             [pasmo-gigi.geo.ui.navigation.nav-handlers]
             [pasmo-gigi.geo.ui.navigation.nav-subscriptions]
             [pasmo-gigi.geo.ui.navigation.nav-views :as nav-views]
@@ -13,15 +14,15 @@
 
 
 (defn setup-mapbox [mapbox-api]
-
   (.log js/console "mapbox api: " mapbox-api)
-
-  (let [mapbox (.-mapbox mapbox-api)]
+  (let [mapbox (gob/get mapbox-api "mapbox")]
     (.log js/console "mapbox prop from api: " mapbox)
     (set! (.-accessToken mapbox) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg")
+    (gob/set mapbox "accessToken" "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg")
     (swap! db/settings assoc :mapbox-api mapbox-api))
 
-  (.log js/console "set: " (.-accessToken (.-mapbox (:mapbox-api @db/settings)))))
+  (.log js/console "set: " (.-accessToken (.-mapbox (:mapbox-api @db/settings))))
+  (:mapbox-api @db/settings))
 
 (defn mount-root
   []
