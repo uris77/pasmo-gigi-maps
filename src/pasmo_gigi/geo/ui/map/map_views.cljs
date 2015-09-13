@@ -8,13 +8,16 @@
 
 (defn render-map
   []
-  (let [mapbox-api       (:mapbox-api @settings)
-        mapbox-prop      (gob/get mapbox-api "mapbox")
-        map-el           (.map mapbox-prop  "map" "uris77.nd0o07dd")
-        feature-layer-fn ((gob/get mapbox-prop "featureLayer"))
-        feature-layer    (.addTo feature-layer-fn map-el)]
-    (reset! FEATURE-LAYER feature-layer)))
+  (let [mapbox-api        (:mapbox-api @settings)
+        mapbox-prop       (gob/get mapbox-api "mapbox")
+        map-el            (.map mapbox-prop  "map" "uris77.nd0o07dd")
+        feature-layer-obj ((gob/get mapbox-prop "featureLayer"))
+        add-to-fn         (gob/get feature-layer-obj "addTo")
+        feature-layer     (.apply add-to-fn feature-layer-obj (array map-el))]
+    (reset! FEATURE-LAYER feature-layer)
+    (.log js/console "FEATURE_LAYER: " @FEATURE-LAYER)))
 
 (defn map-coords
   [coords]
   (.setGeoJSON @FEATURE-LAYER (clj->js coords)))
+

@@ -24,10 +24,10 @@
                  [reloaded.repl "0.1.0"]
                  [compojure "1.4.0"]
                  [cljs-http "0.1.37"]
-                 [reagent "0.5.1-rc2"]
                  [reagent-utils "0.1.5"]
                  [re-frame "0.5.0-SNAPSHOT"]
-                 [secretary "1.2.3"]]
+                 [secretary "1.2.3"]
+                 [reagent "0.5.1"]]
 
   :jvm-opts ["-Xmx512m"]
   
