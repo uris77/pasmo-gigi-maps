@@ -17,7 +17,7 @@
   (.log js/console "mapbox api: " mapbox-api)
   (let [mapbox (gob/get mapbox-api "mapbox")]
     (.log js/console "mapbox prop from api: " mapbox)
-    (set! (.-accessToken mapbox) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg")
+    #_(set! (.-accessToken mapbox) "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg")
     (gob/set mapbox "accessToken" "pk.eyJ1IjoidXJpczc3IiwiYSI6InRuYTZRa3MifQ._Bo-JRcA7QVGocCJvdSoJg")
     (swap! db/settings assoc :mapbox-api mapbox-api))
 
