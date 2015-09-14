@@ -45,5 +45,3 @@
          (map #(select-keys % [:_id :lubesAvailable :survey :geometry :type :condomsAvailable :properties])))))
 
 
-
-(clojure.pprint/pprint (all-survey-details-for 2020 "November"))
