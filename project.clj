@@ -30,14 +30,14 @@
                  [reagent "0.5.1"]]
 
   :jvm-opts ["-Xmx512m"]
-  
+
   :plugins [[lein-ring "0.9.6"]
             [lein-environ "1.0.0"]]
 
   :main pasmo-gigi.geo.server
 
   :min-lein-version "2.0.0"
-  
+
   :uberjar-name "pasmo-gigi-maps.jar"
 
   :profiles {:dev-common       {:plugins       [[lein-cljsbuild "1.0.6"]
@@ -54,12 +54,11 @@
                                                                          :optimizations :none
                                                                          :recompile-dependents true
                                                                          :main "pasmo-gigi.geo.ui.core"
-                                                                         :externs ["js/mapbox.js", 
-                                                                                   "externs/mapbox.js"]
+                                                                         :externs ["externs/mapbox.js"]
                                                                          :source-map true}}]}}
              :dev-env-vars     {}
              :dev              [:dev-env-vars :dev-common]
-             
+
              :uberjar-common   {:aot          :all
                                 :omit-source  true
                                 :source-paths ["src"]
@@ -69,15 +68,14 @@
                                 :cljsbuild    {:builds {:app {:source-paths ["src/pasmo_gigi/geo/ui"]
                                                               :jar          true
                                                               :figwheel     false
-                                                              :compiler     {:optimizations :advanced
-                                                                             :main "pasmo-gigi.geo.ui.core"
+                                                              :compiler     {:optimizations  :advanced
+                                                                             :main           "pasmo-gigi.geo.ui.core"
                                                                              :output-wrapper true
-                                                                             :asset-path "js/out"
-                                                                             :output-to "target/classes/public/js/app.js"
-                                                                             :output-dir "target/classes/public/js/out"
+                                                                             :asset-path     "js/out"
+                                                                             :output-to      "target/classes/public/js/app.js"
+                                                                             :output-dir     "target/classes/public/js/out"
 
-                                                                             :externs ["js/mapbox.js",
-                                                                                       "externs/mapbox.js"]}}}}}
+                                                                             :externs        ["externs/mapbox.js"]}}}}}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
                                 :db             (System/getenv "DB")
                                 :default-admin  (System/getenv "DEFAULT_ADMIN")
@@ -88,5 +86,3 @@
                                 :token-url      (System/getenv "TOKEN_URL")
                                 :profile-url    (System/getenv "PROFILE_URL")}
              :uberjar          [:uberjar-common :uberjar-env-vars]})
-
-
