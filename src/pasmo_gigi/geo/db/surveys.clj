@@ -37,6 +37,7 @@
                  (assoc % :geometry loc)))
          (map #(-> %
                    (assoc :properties {:title (get-in % [:location :name])
+                                       :description (str (when (:condomsAvailable %) "Condoms were available.") " " (str (when (:lubesAvailable %) "Lubes were available.")))
                                        :marker-size "large"
                                        :marker-symbol "building"
                                        :marker-color (marker-color %)})
@@ -44,3 +45,5 @@
          (map #(select-keys % [:_id :lubesAvailable :survey :geometry :type :condomsAvailable :properties])))))
 
 
+
+(clojure.pprint/pprint (all-survey-details-for 2020 "November"))
