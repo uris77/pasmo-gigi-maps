@@ -54,7 +54,7 @@
                                                                          :optimizations :none
                                                                          :recompile-dependents true
                                                                          :main "pasmo-gigi.geo.ui.core"
-                                                                         :externs ["js/externs.js"]
+                                                                         :externs ["resources/public/js/externs.js"]
                                                                          :source-map true}}]}}
              :dev-env-vars     {}
              :dev              [:dev-env-vars :dev-common]
@@ -75,7 +75,7 @@
                                                                              :output-to      "target/classes/public/js/app.js"
                                                                              :output-dir     "target/classes/public/js/out"
 
-                                                                             :externs        ["js/externs.js"]}}}}}
+                                                                             :externs        ["resources/public/js/externs.js"]}}}}}
              :uberjar-env-vars {:mongo-uri      (System/getenv "MONGO_URI")
                                 :db             (System/getenv "DB")
                                 :default-admin  (System/getenv "DEFAULT_ADMIN")
