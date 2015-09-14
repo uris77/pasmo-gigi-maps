@@ -6,7 +6,7 @@
 
 (def FEATURE-LAYER (r/atom nil))
 
-(defn render-map
+#_(defn render-map
   []
   (let [mapbox-api        (:mapbox-api @settings)
         mapbox-prop       (gob/get mapbox-api "mapbox")
@@ -14,6 +14,15 @@
         feature-layer-obj ((gob/get mapbox-prop "featureLayer"))
         add-to-fn         (gob/get feature-layer-obj "addTo")
         feature-layer     (.apply add-to-fn feature-layer-obj (array map-el))]
+    (reset! FEATURE-LAYER feature-layer)
+    (.log js/console "FEATURE_LAYER: " @FEATURE-LAYER)))
+
+(defn render-map
+  []
+  (let [map-el (.map (-> js/L .-mapbox) "map" "uris77.nd0o07dd")
+        feature-layer (.addTo (-> js/L
+                                  .-mapbox
+                                  .featureLayer) map-el)]
     (reset! FEATURE-LAYER feature-layer)
     (.log js/console "FEATURE_LAYER: " @FEATURE-LAYER)))
 
