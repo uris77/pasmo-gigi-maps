@@ -1,0 +1,11 @@
+{:dev-env-vars {:env {:mongo-uri "mongo uri"
+                      :db "DATABASE"
+                      :default-admin "admin@mail.com"
+                      :client-id "CLIENT_ID"
+                      :client-secret "SECRET"
+                      :oauth-domain "http://localhost:3449"
+                      :oauth-callback "/oauth2callback"
+                      :auth-url "https://accounts.google.com/o/oauth2/auth"
+                      :token-url "https://accounts.google.com/o/oauth2/token"
+                      :profile-url "https://www.googleapis.com/plus/v1/people/me"}}}
+
